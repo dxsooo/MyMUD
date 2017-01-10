@@ -86,10 +86,10 @@ class Server:
     def tell_all(self, message, player):
         list_keys = self.player_list.keys()
         for key in list_keys:
-            if player.uuid==key:
-                omessage = "> YOU said: " +message
+            if player.uuid == key:
+                omessage = "> YOU said: " + message
             else:
-                omessage = player.name +" said: " + message
+                omessage = player.name + " said: " + message
             self.player_list[key].out_que.append(omessage)
 
     def player_add(self, player):

@@ -74,7 +74,7 @@ class DB(object):
         cursor.execute("SELECT password FROM " + TB_NAME + " where name=?", [name])
         return cursor.fetchone()
 
-    def select_loginT(self, name):
+    def select_login(self, name):
         cursor = self.conn.cursor()
         cursor.execute("SELECT last_login FROM " + TB_NAME + " where name=?", [name])
         return cursor.fetchone()

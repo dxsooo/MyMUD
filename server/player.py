@@ -48,7 +48,7 @@ class Player:
                     self.vertify_password(arg)
         elif self.state == "online":
             if arg == "info":
-                row = self.server.db.select_loginT(self.name)
+                row = self.server.db.select_login(self.name)
                 message = "name: " + self.name + "\n"
                 message += "online: " + str(
                     datetime.datetime.now() - datetime.datetime.strptime(row[0], '%Y-%m-%d %H:%M:%S.%f'))
@@ -62,7 +62,7 @@ class Player:
                 message = arg[5:]
                 self.server.tell_all(message, self)
             else:
-                message = "useless input!"
+                message = "Useless input!"
                 self.out_que.append(message)
 
     def vertify_name(self, arg):
