@@ -16,7 +16,7 @@ class Player:
         self.log_in()
 
     def send_output(self):
-        if (len(self.out_que) > 0):
+        if len(self.out_que) > 0:
             if self.state == "online":
                 self.out_que.append('> ')
             alive = self.conn.send(self.out_que)
@@ -43,9 +43,9 @@ class Player:
                 self.innew = True
             else:
                 if self.name == "":
-                    self.vertify_name(arg)
+                    self.verify_name(arg)
                 else:
-                    self.vertify_password(arg)
+                    self.verify_password(arg)
         elif self.state == "online":
             if arg == "info":
                 row = self.server.db.select_login(self.name)
@@ -65,7 +65,7 @@ class Player:
                 message = "Useless input!"
                 self.out_que.append(message)
 
-    def vertify_name(self, arg):
+    def verify_name(self, arg):
         if not self.server.db.check_exist(arg):
             if not self.innew:
                 message = "No player named '" + arg + "' exists!"
@@ -81,7 +81,7 @@ class Player:
                 self.password = row[0]
                 self.out_que.append("Enter password: ")
 
-    def vertify_password(self, arg):
+    def verify_password(self, arg):
         if self.password == "":
             self.password = arg
             self.server.db.insert_item([self.name, self.password, datetime.datetime.now(), None, None])
