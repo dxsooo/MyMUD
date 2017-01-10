@@ -99,7 +99,10 @@ class Player:
         self.out_que.append(intro_message)
 
     def log_out(self):
-        self.conn.close()
+        try:
+            self.conn.close()
+        except:
+            pass
         self.server.db.update_logout((datetime.datetime.now(), self.name))
         self.server.player_delete.append(self.uuid)
 
