@@ -43,7 +43,7 @@ class TelnetConnection:
 class TelnetHandler(threading.Thread):
     def __init__(self, s):
         threading.Thread.__init__(self)
-        self.daemon = True  # So this thread will exit when the main thread does
+        self.daemon = True
         self.server = s
         self.listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
